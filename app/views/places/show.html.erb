@@ -8,21 +8,26 @@
   <%end%>
 </div>
 
-<div class = "container">
-  <div class = "row">
+
+<div class = "row">
   <% if @current_user %>
     <% for post in @posts %>
       <% if post.user_id == @current_user.id %>
-        <div class = "col-md-4">
+        <div class="col-md-4">
           <h3><%= post.title %></h3>
           <h4><%= post.posted_on %></h4>
+          <% if post.uploaded_image.attached? %>
+            <img src="<%= url_for(post.uploaded_image) %>" class="img-fluid img-responsive">
+          <% else %>
+            <img src="<%= post["image"] %>" class="img-fluid img-responsive">
+          <% end %>
           <p><%= post.description %></p>
         </div>
       <% end %>
     <% end %>
   <% end %>
-  </div>
 </div>
+
 
 
 <div class = "container">

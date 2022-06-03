@@ -3,27 +3,30 @@
 </div>
 
 <% if @current_user %>
-<div class="column container">
+
   <%= form_with :model => @post do |form| %>
-    <div class = "row">
-    <p>
-      <%= form.label "title" %>
-      <%= form.text_field "title" %>
-    </p>
+    <div class = "mb-3">
+      <%= form.label "title", :class => "form-label" %>
+      <%= form.text_field "title", :class => "form-control" %>
     </div>
-    <div class = "row">
-    <p>
-      <%= form.label "description" %>
-      <%= form.text_field "description" %>
-    </p>
+
+    <div class = "mb-3">    
+      <%= form.label "description",:class => "form-label" %>
+      <%= form.text_field "description",:class => "form-control" %>    
     </div>
-    <div class = "row">
-    <p>
-      <%= form.label "posted_on" %>
-      <%= form.date_field "posted_on" %>
-    </p>
+
+    <div class = "mb-3">    
+      <%= form.label "uploaded_image", :class => "form-label" %>
+      <%= form.file_field "uploaded_image", :accept => "image/png,image/jpg,image/jpeg,image/gif", :class => "form-control"  %>    
     </div>
-  </div>
+    
+    <div class = "mb-3">
+    
+      <%= form.label "posted_on" ,:class => "form-label" %>
+      <%= form.date_field "posted_on",:class => "form-control"  %>
+    
+    </div>
+  
     <div class ="container">
     <p>
      <%= form.submit "Submit", class:"btn btn-primary" %>
